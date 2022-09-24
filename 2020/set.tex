@@ -1,0 +1,108 @@
+% \CTEXsetup[format={\Large\bfseries}]{section}
+\ctexset{section = {format = {\Large\bfseries}}}
+
+\newlength{\choicelengtha}
+\newlength{\choicelengthb}
+\newlength{\choicelengthc}
+\newlength{\choicelengthd}
+\newlength{\choicelengthe}
+\newlength{\maxlength}
+
+\makeatletter
+\newcommand{\fourch}[4]{
+  \par
+  \settowidth{\choicelengtha}{A．#1}
+  \settowidth{\choicelengthb}{B．#2}
+  \settowidth{\choicelengthc}{C．#3}
+  \settowidth{\choicelengthd}{D．#4}
+  \ifthenelse{\lengthtest{\choicelengtha>\choicelengthb}}{\setlength{\maxlength}{\choicelengtha}}{\setlength{\maxlength}{\choicelengthb}}
+  \ifthenelse{\lengthtest{\choicelengthc>\maxlength}}{\setlength{\maxlength}{\choicelengthc}}{}
+  \ifthenelse{\lengthtest{\choicelengthd>\maxlength}}{\setlength{\maxlength}{\choicelengthd}}{}
+  \ifthenelse{\lengthtest{\maxlength>0.8\linewidth}}
+  {%
+    \noindent%
+    \begin{tabular}{@{}p{\linewidth}@{}}
+      \setlength\tabcolsep{0pt}
+      \@hangfrom{\textsf A．}#1 \\
+      \@hangfrom{\textsf B．}#2 \\
+      \@hangfrom{\textsf C．}#3 \\
+      \@hangfrom{\textsf D．}#4 \\
+    \end{tabular}
+  }%
+  {%
+    \ifthenelse{\lengthtest{\maxlength>0.22\linewidth}}
+    {%
+      \noindent%
+      \begin{tabular}{@{}p{0.48\linewidth}@{\hspace*{0.04\linewidth}}p{0.48\linewidth}@{}}
+        \setlength\tabcolsep{0pt}
+        \@hangfrom{\textsf A．}#1 & \@hangfrom{\textsf B．}#2 \\
+        \@hangfrom{\textsf C．}#3 & \@hangfrom{\textsf D．}#4 \\
+      \end{tabular}
+    }%
+    {%
+      \noindent%
+      \begin{tabular}{@{}*{3}{p{0.22\linewidth}@{\hspace*{0.04\linewidth}}}p{0.22\linewidth}@{}}
+        \setlength\tabcolsep{0pt}
+        \@hangfrom{\textsf A．}#1  & \@hangfrom{\textsf B．}#2 & \@hangfrom{\textsf C．}#3 & \@hangfrom{\textsf D．}#4 \\
+      \end{tabular}
+    }%
+  }%
+  \unskip\unskip
+}
+
+\newcommand{\fivech}[5]{
+  \par
+  \settowidth{\choicelengtha}{A．#1}
+  \settowidth{\choicelengthb}{B．#2}
+  \settowidth{\choicelengthc}{C．#3}
+  \settowidth{\choicelengthd}{D．#4}
+  \settowidth{\choicelengthe}{E．#5}
+  \ifthenelse{\lengthtest{\choicelengtha>\choicelengthb}}{\setlength{\maxlength}{\choicelengtha}}{\setlength{\maxlength}{\choicelengthb}}
+  \ifthenelse{\lengthtest{\choicelengthc>\maxlength}}{\setlength{\maxlength}{\choicelengthc}}{}
+  \ifthenelse{\lengthtest{\choicelengthd>\maxlength}}{\setlength{\maxlength}{\choicelengthd}}{}
+  \ifthenelse{\lengthtest{\choicelengthe>\maxlength}}{\setlength{\maxlength}{\choicelengthe}}{}
+  \ifthenelse{\lengthtest{\maxlength>0.5\linewidth}}
+  {%
+    \noindent%
+    \begin{tabular}{@{}p{\linewidth}@{}}
+      \setlength\tabcolsep{0pt}
+      \@hangfrom{\textsf A．}#1 \\
+      \@hangfrom{\textsf B．}#2 \\
+      \@hangfrom{\textsf C．}#3 \\
+      \@hangfrom{\textsf D．}#4 \\
+      \@hangfrom{\textsf E．}#5 \\
+    \end{tabular}
+  }%
+  {%
+    \ifthenelse{\lengthtest{\maxlength>0.15\linewidth}}
+    {%
+      \noindent%
+      \begin{tabular}{@{}p{0.48\linewidth}@{\hspace*{0.04\linewidth}}p{0.48\linewidth}@{}}
+        \setlength\tabcolsep{0pt}
+        \@hangfrom{\textsf A．}#1 & \@hangfrom{\textsf B．}#2 \\
+        \@hangfrom{\textsf C．}#3 & \@hangfrom{\textsf D．}#4 \\
+        \@hangfrom{\textsf E．}#5 \\
+      \end{tabular}
+    }%
+    {%
+      \noindent%
+      \begin{tabular}{@{}*{5}{p{0.16\linewidth}@{\hspace*{0.04\linewidth}}}p{0.16\linewidth}@{}}
+        \setlength\tabcolsep{0pt}
+        \@hangfrom{\textsf A．}#1  & \@hangfrom{\textsf B．}#2 & \@hangfrom{\textsf C．}#3 & \@hangfrom{\textsf D．}#4 & \@hangfrom{\textsf E．}#5 \\
+      \end{tabular}
+    }%
+  }%
+  \unskip\unskip
+}
+\makeatother
+
+% \renewcommand{\thesection}{\chinese{section}、}
+% \renewcommand{\thesubsection}{\arabic{subsection}.}
+% \renewcommand{\thesubsubsection}{(\arabic{subsubsection})}
+
+% \makeatletter
+% \renewcommand\@seccntformat[1]{%
+%     {\csname the#1\endcsname}\hspace{0.1em}
+% }
+% \makeatother
+
